@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>组名:</td>
+        <td th:text="${currentGroup.groupName}"></td>
+    </tr>
+    <tr>
+        <td>组id:</td>
+        <td th:text="${currentGroup.groupId}"></td>
+    </tr>
+    <tr>
+        <td>创建者:</td>
+        <td th:text="${currentGroup.masterUsername}"></td>
+    </tr>
+</table>
+</body>
+</html>

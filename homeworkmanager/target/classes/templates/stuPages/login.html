@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+
+    <style type="text/css">
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        h2{
+            margin-top:5%;
+            color: aliceblue;
+        }
+        body{
+            background: url("/beautifulBbgu.jpg");
+            position:fixed;
+            width:100%;
+            height:100%;
+            background-repeat:no-repeat;
+            background-size:cover;
+            -webkit-background-size: cover;
+        }
+        input{
+            border:none;
+        }
+        .formBox{
+            width:20%;
+            height:350px;
+            margin:auto;
+            margin-top:10%;
+            text-align: center;
+            border-radius: 10px;
+            padding: 50px 50px;
+            background-color:rgba(0,0,0,.4);
+        }
+        .inputBox{
+            border-bottom:2px solid;
+            width: 60%;
+            font-size:15px;
+            border-bottom-color: aliceblue;
+            background:transparent;
+            outline:none;
+            padding:5px 10px;
+            margin-top: 15px;
+            color: aliceblue;
+        }
+        .btn{
+            position:relative;
+            margin-top:50px;
+            width:60%;
+            height:30px;
+            background-image: linear-gradient(to right, #30cfd0, #330867);
+            border-radius:10px;
+            color:white;
+        }
+        .btn:hover{
+            bottom:10px;
+            background-image: linear-gradient(to right,#eee95c,#695d05);
+        }
+    </style>
+</head>
+<body >
+    <div>
+        <div class="formBox">
+            <h2>登录</h2>
+            <form method="post" th:action="@{/students/login}">
+                <div><input class="inputBox" type="text" placeholder="账号" name="account"/></div>
+                <div><input class="inputBox" type="password" placeholder="密码" name="password"></div>
+                <div class="msg" th:text=""></div>
+                <input class="btn" type="submit" value="登录"/>
+            </form>
+        </div>
+    </div>
+
+
+</body>
+</html>

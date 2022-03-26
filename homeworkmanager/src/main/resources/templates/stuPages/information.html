@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>个人信息</title>
+</head>
+<body>
+姓名:<div th:utext="${session.student.realName}"></div>
+账号:<div th:utext="${session.student.account}"></div>
+用户名:<div th:utext="${session.student.username}"></div>
+学号:<div th:utext="${session.student.stuId}"></div>
+班级:<div th:utext="${session.student.stuClass}"></div>
+<a th:href="@{/pages/updateInfo}">编辑资料</a>
+</body>
+</html>

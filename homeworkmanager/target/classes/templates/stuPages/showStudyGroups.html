@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>学习小组</title>
+</head>
+<body>
+<table>
+    <tr th:each="groups:${session.student.studyGroups}">
+        <form th:action="@{/groups/enterGroup}">
+            <input type="hidden" th:value="${groups.groupId}" name="groupId"/>
+            <td th:text="${groups.groupId}"></td>
+            <td th:text="${groups.groupName}"></td>
+            <td th:text="${groups.masterUsername}"></td>
+            <td><input type="submit" value="查看"/></td>
+        </form>
+    </tr>
+</table>
+<a th:href="@{/pages/stuIndex}">返回</a>
+</body>
+</html>

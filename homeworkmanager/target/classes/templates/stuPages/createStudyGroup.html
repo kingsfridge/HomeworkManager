@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>创建学习小组</title>
+</head>
+<body>
+<form th:action="@{/students/createStudyGroup}" method="post">
+    小组id:<input type="text" value="" name="groupId"/>
+    小组名:<input type="text" value="" name="groupName"/>
+    <input type="submit" value="提交"><br/>
+    <div th:text="${#httpServletRequest.getAttribute('msg')}" style="color: red"></div>
+</form>
+</body>
+</html>
