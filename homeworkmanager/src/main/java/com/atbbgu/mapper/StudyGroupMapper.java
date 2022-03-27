@@ -41,4 +41,27 @@ public interface StudyGroupMapper {
     StudyGroup selectByAny(StudyGroup studyGroup);
 
 
+    //根据组id选出学习组(携带学生)一对多
+    @Select("select * from study_groups where group_id=#{groupId}")
+    @Results({
+            @Result(id = true,property="id",column = "id"),
+            @Result(property = "groupId",column = "group_id"),
+            @Result(property = "groupName",column = "group_name"),
+            @Result(property = "masterUsername",column="master_username"),
+            @Result(property="masterAccount",column = "master_account"),
+            @Result(property = "members",column = "group_id",javaType = List.class,
+                    many = @Many(select = "com.atbbgu.mapper.StudentMapper.selectStusForGroup"))
+    })
+    StudyGroup selectGroupWithStudents(String groupId);
+
+    //选择所有
+    @Select("select id,group_id,group_name,master_username,master_account from study_groups")
+    @Results({
+            @Result(id = true,property="id",column = "id"),
+            @Result(property = "groupId",column = "group_id"),
+            @Result(property = "groupName",column = "group_name"),
+            @Result(property = "masterUsername",column="master_username"),
+            @Result(property="masterAccount",column = "master_account")
+    })
+    List<StudyGroup> selectAllGroups();
 }

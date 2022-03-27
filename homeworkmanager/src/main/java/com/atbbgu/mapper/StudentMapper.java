@@ -100,4 +100,23 @@ public interface StudentMapper {
             @Result(property = "masterUsername",column = "master_username")
     })
     List<StudyGroup> findMyStudyGroup(String account);
+
+    //选出某班级的所有学生
+    @Select("SELECT * \n" +
+            "FROM students\n" +
+            "WHERE `account` IN(\n" +
+            "\t\tSELECT `account` \n" +
+            "\t\tFROM stu_to_group\n" +
+            "\t\tWHERE group_id=#{groupId}\n" +
+            "\t\t)")
+    @Results({
+            @Result(id = true,property="id",column="id"),
+            @Result(property="stuId",column="stu_id"),
+            @Result(property = "username",column="username"),
+            @Result(property = "account",column="account"),
+            @Result(property = "password",column="password"),
+            @Result(property = "stuClass",column="stu_class"),
+            @Result(property = "realName",column="realname")
+    })
+    List<Student> selectStusForGroup(String groupId);
 }

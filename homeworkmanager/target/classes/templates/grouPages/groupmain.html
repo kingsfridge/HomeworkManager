@@ -5,19 +5,40 @@
     <title>Title</title>
 </head>
 <body>
-<table>
-    <tr>
-        <td>组名:</td>
-        <td th:text="${currentGroup.groupName}"></td>
-    </tr>
-    <tr>
-        <td>组id:</td>
-        <td th:text="${currentGroup.groupId}"></td>
-    </tr>
-    <tr>
-        <td>创建者:</td>
-        <td th:text="${currentGroup.masterUsername}"></td>
-    </tr>
-</table>
+
+    <table>
+        <tr>
+            <td>组名:</td>
+            <td th:text="${currentGroup.groupName}"></td>
+        </tr>
+        <tr>
+            <td>组id:</td>
+            <td th:text="${currentGroup.groupId}"></td>
+        </tr>
+        <tr>
+            <td>创建者:</td>
+            <td th:text="${currentGroup.masterUsername}"></td>
+        </tr>
+    </table>
+
+    <h2>成员</h2>
+    <table>
+        <tr th:each="student:${currentGroup.members}">
+            <td th:text="${student.realName}"></td>
+            <td th:text="${student.account}"></td>
+            <td th:text="${student.username}"></td>
+            <td th:text="${student.stuId}"></td>
+        </tr>
+    </table>
+
+    <form th:action="@{/stuToGroup/joinGroup}" method="post">
+        <input type="hidden" th:value="${session.student.account}" name="account"/>
+        <input type="hidden" th:value="${currentGroup.groupId}" name="groupId"/>
+        <input type="hidden" th:value="${currentGroup.groupId}" name="tempGroupId">
+        <input type="submit" value="加入"/>
+    </form>
+
+    <h4 style="color: red" th:text="${msg}"></h4>
+
 </body>
 </html>

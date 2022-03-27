@@ -6,6 +6,7 @@ import com.atbbgu.mapper.StudyGroupMapper;
 import com.atbbgu.service.StudyGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 @Service
 public class StudyGroupServiceImpl implements StudyGroupService {
@@ -23,5 +24,13 @@ public class StudyGroupServiceImpl implements StudyGroupService {
 
     public StudyGroup selectByAny(StudyGroup studyGroup){
         return studyGroupMapper.selectByAny(studyGroup);
+    }
+
+    public StudyGroup selectGroupWithStudents(String groupId){
+        return studyGroupMapper.selectGroupWithStudents(groupId);
+    }
+
+    public List<StudyGroup> selectAllGroups(){
+        return studyGroupMapper.selectAllGroups();
     }
 }

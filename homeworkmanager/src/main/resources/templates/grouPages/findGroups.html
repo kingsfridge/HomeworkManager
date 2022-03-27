@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>小组大厅</title>
+</head>
+<body>
+<table>
+    <tr th:each="groups:${allGroups}">
+        <form th:action="@{/groups/enterGroup}">
+            <input type="hidden" th:value="${groups.groupId}" name="groupId"/>
+            <td th:text="${groups.groupId}"></td>
+            <td th:text="${groups.groupName}"></td>
+            <td th:text="${groups.masterUsername}"></td>
+            <td><input type="submit" value="查看"/></td>
+        </form>
+    </tr>
+</table>
+</body>
+</html>
